@@ -4,7 +4,7 @@ name: taskflow-django-overdue
 package: .
 jobs:
   - name: overdue-sweep
-    trigger: 15m
+    trigger: post-deployment
     action:
       execute:
         command: python

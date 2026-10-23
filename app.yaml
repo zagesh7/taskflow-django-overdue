@@ -4,12 +4,12 @@ name: taskflow-django-overdue
 package: .
 jobs:
   - name: overdue-sweep
-    trigger: "15m"
+    trigger: post-deployment
     action:
       execute:
         command: python
         cli_args:
-          - /app/manage.py
-          - mark_overdue_tasks
+          - -c
+          - "import os,sys; print('cwd=',os.getcwd()); print('root=',os.listdir('/')); print('manage candidates=',[(p,os.path.exists(p)) for p in ['/app/manage.py','/workspace/manage.py','/src/manage.py','manage.py']]); print('sys.path=',sys.path)"
         env:
-          PYTHONPATH: /app
+          PYTHONPATH: .

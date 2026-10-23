@@ -34,11 +34,16 @@ Django does not create or migrate the shared application tables. Run Laravel mig
 
 The synchronization endpoint requires the configured shared token. Keep the token private and use HTTPS in production.
 
+## Tests
+
+Install the dependencies in a virtual environment, then run `python manage.py test --settings=overdue_service.test_settings`. The test settings use an in-memory SQLite test database; tests cover the overdue SQL conditions, health response, required internal token, fail-closed configuration, and successful protected sync. They do not modify the shared production database.
+
 ## Wasmer deployment
 
-`app.yaml` defines the Wasmer app and its 15-minute scheduled job. Connect this repository and configure Django's production secret, allowed hosts, shared MySQL credentials, and sync token in Wasmer's secret/environment settings. The scheduled job is configured to run every 15 minutes; adjust it to fit your deployment. This service must reach the same database as Laravel. No Django migration should be run against Laravel-owned tables.
+`app.yaml` defines the Wasmer app and its 15-minute scheduled job. The scheduled command uses the absolute app path so it works even when the job runner starts outside the repository directory. Connect this repository and configure Django's production secret, allowed hosts, shared MySQL credentials, and sync token in Wasmer's secret/environment settings. This service must reach the same database as Laravel. No Django migration should be run against Laravel-owned tables.
 
-Live service URL: _To be added after deployment._
+Live service URL: https://taskflow-django-overdue.wasmer.app
+Health check: https://taskflow-django-overdue.wasmer.app/health/
 
 ## Related repositories
 

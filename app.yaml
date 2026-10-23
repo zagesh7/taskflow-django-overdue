@@ -1,10 +1,7 @@
 kind: wasmer.io/App.v0
-owner: replace-with-your-wasmer-username
+owner: zagesh7
 name: taskflow-django-overdue
 package: .
-locality:
-  regions:
-    - fr-roub1
 jobs:
   - name: overdue-sweep
     trigger: "15m"

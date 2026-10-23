@@ -36,7 +36,7 @@ The synchronization endpoint requires the configured shared token. Keep the toke
 
 ## Wasmer deployment
 
-`app.yaml.example` shows the Wasmer app and scheduled job configuration. Copy it to `app.yaml`, replace the owner placeholder, connect this repository, and configure Django's production secret, allowed hosts, shared MySQL credentials, and sync token in Wasmer's secret/environment settings. The scheduled job is configured to run every 15 minutes; adjust it to fit your deployment. This service must reach the same database as Laravel. No Django migration should be run against Laravel-owned tables.
+`app.yaml` defines the Wasmer app and its 15-minute scheduled job. Connect this repository and configure Django's production secret, allowed hosts, shared MySQL credentials, and sync token in Wasmer's secret/environment settings. The scheduled job is configured to run every 15 minutes; adjust it to fit your deployment. This service must reach the same database as Laravel. No Django migration should be run against Laravel-owned tables.
 
 Live service URL: _To be added after deployment._
 
@@ -44,3 +44,4 @@ Live service URL: _To be added after deployment._
 
 - [TaskFlow Laravel API](https://github.com/zagesh7/taskflow-laravel-api)
 - [TaskFlow React frontend](https://github.com/zagesh7/taskflow-react-frontend)
+

@@ -1,0 +1,16 @@
+kind: wasmer.io/App.v0
+owner: replace-with-your-wasmer-username
+name: taskflow-django-overdue
+package: .
+locality:
+  regions:
+    - fr-roub1
+jobs:
+  - name: overdue-sweep
+    trigger: "15m"
+    action:
+      execute:
+        command: python
+        cli_args:
+          - manage.py
+          - mark_overdue_tasks

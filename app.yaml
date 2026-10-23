@@ -9,7 +9,7 @@ jobs:
       execute:
         command: python
         cli_args:
-          - -c
-          - "import os,sys; print('cwd=',os.getcwd()); print('root=',os.listdir('/')); print('manage candidates=',[(p,os.path.exists(p)) for p in ['/app/manage.py','/workspace/manage.py','/src/manage.py','manage.py']]); print('sys.path=',sys.path)"
+          - /app/manage.py
+          - mark_overdue_tasks
         env:
-          PYTHONPATH: .
+          PYTHONPATH: /app
